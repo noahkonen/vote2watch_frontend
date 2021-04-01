@@ -1,7 +1,7 @@
 import './App.css';
 import LandingPage from "./components/LandingPage"
 
-const state = "Spider Solitaire is gay"
+const state = "Hello, World!"
 
 
 function App() {
