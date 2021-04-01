@@ -11,10 +11,10 @@ export const LandingPage = (props) => {
                 <img className = "image" src={logo} alt="Vote2Watch Logo"/>   
             </div>
             <h1>
-                Welcome to Vote2Watch, RoomID: {GenRoomID()}
+                Welcome to Vote2Watch
             </h1>
             <h1>
-                {props.data}
+                Landing Page
             </h1>
         </div>
     )
