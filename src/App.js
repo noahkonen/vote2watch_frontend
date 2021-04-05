@@ -11,9 +11,9 @@ import GuestGameRoom from './components/GuestGameRoom';
 //===============================================
 
 
-
+//main app 
 const App = () => {
-  // const [showAddRoom, setShowAddRoom] = useState(false)
+  //state constants, and their set functions for rooms and movies
   const [roomData, setRoomData] = useState([])
   const [movieData, setMovieData] = useState([])
 
@@ -33,40 +33,43 @@ const App = () => {
     return data
   }
 
+  //use effect (same as ComponentDidMount), runs when component renders
   useEffect(() => {
+    //calls the fetch rooms and changes state of roomData
     const getRooms = async() => {
       const roomsFromBackend = await fetchRooms()
       setRoomData(roomsFromBackend)
       console.log(roomData)
     }
-
+    //calls the fetch movies and changes state of movieData
     const getMovies = async() => {
       const moviesFromBackend = await fetchMovies()
       setMovieData(moviesFromBackend)
       console.log(movieData)
     }
     
+    //if movies has data in it, don't run the fetch again
     if (!movieData.length) {
       getMovies()
     }
     
+    //get all the rooms from mongoDB
     getRooms()
 
-
-    console.log('useEffect')
   }, [])
 
+  //Switch statement in return controlls what component renders
   return (
     <div className="App">
       <Switch>
         <Route path = '/' exact
         render = {() => <LandingPage roomData = {roomData} />}
       />
-      <Route path = '/HostGameRoom'
-      render = {() => <HostGameRoom roomData = {roomData} />}
+        <Route path = '/HostGameRoom'
+        render = {() => <HostGameRoom roomData = {roomData} />}
       />
-      <Route path = '/GuestGameRoom'
-      render = {() => <GuestGameRoom roomData = {roomData} />}
+        <Route path = '/GuestGameRoom'
+        render = {() => <GuestGameRoom roomData = {roomData} />}
       />
       </Switch>
     </div>
