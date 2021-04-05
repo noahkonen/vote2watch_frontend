@@ -1,21 +1,16 @@
 import logo from "../Images/vote2watch10.png"
 import Button from "./Button"
-
-//Generates a roomID
-const GenRoomID = () => {
-    return Math.random().toString(36).slice(2,6).toUpperCase();
-  };
-
+import Axios from "axios"
 
 //Landing page component
-export const LandingPage = ({ roomData }) => {
-    
-    console.log("landingpage")
+export const LandingPage = ({ roomData, movieRoomID }) => {
+
     console.log(roomData)
+    console.log(movieRoomID)
 
     //OnClick for host room button
-    const toHostRoom = () => {
-        console.log('click')
+     const toHostRoom = async() => {
+        const res = await Axios.post("http://localhost:3003/api/rooms/create", { name: movieRoomID });
     }
     //OnClick for guest room button
     const toGuestRoom = () => {

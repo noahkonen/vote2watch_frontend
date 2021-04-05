@@ -10,12 +10,18 @@ import GuestGameRoom from './components/GuestGameRoom';
 // TODO: Learn about state and setting state
 //===============================================
 
+//Generates a roomID
+const GenRoomID = () => {
+  return Math.random().toString(36).slice(2,6).toUpperCase();
+}
+
 
 //main app 
 const App = () => {
   //state constants, and their set functions for rooms and movies
   const [roomData, setRoomData] = useState([])
   const [movieData, setMovieData] = useState([])
+  const [roomIDData, setRoomIDData] = useState([])
 
   //fetch all rooms
   const fetchRooms = async () => {
@@ -47,12 +53,20 @@ const App = () => {
       setMovieData(moviesFromBackend)
       console.log(movieData)
     }
+
+    const setNewRoomID = async() => {
+      const newID = GenRoomID
+      setRoomIDData(newID)
+      console.log(roomIDData)
+    }
     
     //if movies has data in it, don't run the fetch again
     if (!movieData.length) {
       getMovies()
     }
     
+    setNewRoomID()
+
     //get all the rooms from mongoDB
     getRooms()
 
@@ -63,7 +77,7 @@ const App = () => {
     <div className="App">
       <Switch>
         <Route path = '/' exact
-        render = {() => <LandingPage roomData = {roomData} />}
+        render = {() => <LandingPage roomData = {roomData} movieRoomID = {roomIDData} />}
       />
         <Route path = '/HostGameRoom'
         render = {() => <HostGameRoom roomData = {roomData} />}
