@@ -2,6 +2,7 @@ import './App.css';
 import Movies from "./components/Movies";
 import LandingPage from "./components/LandingPage";
 import HostGameRoom from "./components/HostGameRoom";
+import AddMovieRoom from "./components/AddMovieRoom";
 import Axios from "axios";
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -84,6 +85,9 @@ const App = () => {
       />
         <Route path = '/GuestGameRoom'
         render = {() => <GuestGameRoom roomData = {roomData} />}
+      />
+      <Route path = '/AddMovieRoom'
+        render = {() => <AddMovieRoom roomData = {roomData} movieData = {movieData}/>}
       />
       </Switch>
     </div>
