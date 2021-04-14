@@ -28,11 +28,11 @@ export const LandingPage = ({ roomData, movieRoomID }) => {
                 Welcome to Vote2Watch
             </h1>
             <div>
-                <Button color = "red" text = "Host a Game" onClick = {toHostRoom} link = "/HostGameRoom"/>
+                <Button color = "darkblue" text = "Host a Game" onClick = {toHostRoom} link = "/HostGameRoom"/>
                 
             </div>
             <div>
-                <Button text = "Find Game" onClick = {toGuestRoom} link = "/GuestGameRoom"/>
+                <Button color = "blue" text = "Find Game" onClick = {toGuestRoom} link = "/GuestGameRoom"/>
             </div>
             <div>
                 <h2>Available Rooms:</h2>

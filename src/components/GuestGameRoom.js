@@ -9,7 +9,7 @@ export const GuestGameRoom = ({ roomData }) => {
         <div>
             <h1>Welcome to Guest Game Room</h1>
             <div>
-                <Button color = "gray" text = "Back" onClick = {backClick} link = "/"/>
+                <Button color = "green" text = "Back" onClick = {backClick} link = "/"/>
             </div>
         </div>
     )

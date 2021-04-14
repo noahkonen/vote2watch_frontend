@@ -22,6 +22,7 @@ const App = () => {
   const [roomData, setRoomData] = useState([])
   const [movieData, setMovieData] = useState([])
   const [roomIDData, setRoomIDData] = useState([])
+  const [currentRoomID, setRoomID] = useState("")
 
   //fetch all rooms
   const fetchRooms = async () => {
@@ -39,6 +40,18 @@ const App = () => {
     return data
   }
 
+  //Update currentRoomID state
+  const changeCurrentRoomID = (newRoomObject) => {
+    setRoomID(newRoomObject)
+  }
+
+
+
+
+
+
+
+
   //use effect (same as ComponentDidMount), runs when component renders
   useEffect(() => {
     //calls the fetch rooms and changes state of roomData
@@ -55,7 +68,7 @@ const App = () => {
     }
 
     const setNewRoomID = async() => {
-      const newID = GenRoomID
+      const newID = GenRoomID()
       setRoomIDData(newID)
       console.log(roomIDData)
     }
@@ -79,8 +92,9 @@ const App = () => {
         <Route path = '/' exact
         render = {() => <LandingPage roomData = {roomData} movieRoomID = {roomIDData} />}
       />
+      
         <Route path = '/HostGameRoom'
-        render = {() => <HostGameRoom roomData = {roomData} />}
+        render = {() => <HostGameRoom roomData = {roomIDData} updateRoom = {changeCurrentRoomID} />}
       />
         <Route path = '/GuestGameRoom'
         render = {() => <GuestGameRoom roomData = {roomData} />}
